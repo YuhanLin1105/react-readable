@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { Grid } from 'react-bootstrap';
 
-import MyNavBar from '../NavBar/NavBar';
+import {DatePicker} from 'antd';
+import 'antd/dist/antd.css';
 
 class Layout extends Component {
     state = {}
@@ -9,10 +9,7 @@ class Layout extends Component {
     render() {
         return (
             <React.Fragment>
-                <MyNavBar />
-                <Grid>
-                    sdf
-                </Grid>
+               <DatePicker/>
             </React.Fragment>
 
         );
