@@ -1,25 +1,29 @@
 import React, { Component } from 'react';
+import { Route, Switch } from 'react-router-dom';
 
 import Layout from './components/Layout/Layout';
+import PostList from './components/PostList/PostList';
+import HomePage from './pages/HomePage';
 
 class App extends Component {
+
 
 
   render() {
     const defaultCategories = {
       categories: [
-          {
-            name: 'react',
-            path: 'react'
-          },
-          {
-            name: 'redux',
-            path: 'redux'
-          },
-          {
-            name: 'udacity',
-            path: 'udacity'
-          }
+        {
+          name: 'react',
+          path: 'react'
+        },
+        {
+          name: 'redux',
+          path: 'redux'
+        },
+        {
+          name: 'udacity',
+          path: 'udacity'
+        }
       ]
     }
 
@@ -71,12 +75,21 @@ class App extends Component {
       }
     }
 
+    const {categories} = defaultCategories;
+    const posts = Object.keys(defaultPosts).map(key=>{
+      return defaultPosts[key];
+    })
+    
+    console.log(posts);
 
     return (
-      <Layout>
-        Postlist
+      <Layout categories={categories}>
+        <Switch>
+          {/* {categories.map(category => <Route path={'/' + category.path} render={()=><PostList data={posts}/>} />)} */}
+          <Route path='/' component={HomePage} />
+        </Switch>
       </Layout>
-      );
+    );
   }
 }
 
