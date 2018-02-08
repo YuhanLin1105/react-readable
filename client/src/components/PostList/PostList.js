@@ -1,5 +1,6 @@
 import React from 'react';
 import { List,Icon } from 'antd';
+import PropTypes from 'prop-types';
 
 const PostList = (props) => {
     const IconText = ({ type, text }) => (
@@ -36,5 +37,10 @@ const PostList = (props) => {
         />
     );
 };
+
+PostList.propTypes={
+    data:PropTypes.array.isRequired
+}
+
 
 export default PostList;

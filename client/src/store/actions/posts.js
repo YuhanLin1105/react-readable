@@ -3,7 +3,7 @@ import * as ReadbleAPI from '../../ReadableAPI';
 
 
 
-export const fetchStart = () => { tyep: actionTypes.FETCH_POSTS_ALL_START }
+export const fetchStart = () =>{ return{ type: actionTypes.FETCH_POSTS_ALL_START } };
 
 export const fetchSuccess = (data) => {
     return {

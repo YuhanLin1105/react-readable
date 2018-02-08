@@ -1,8 +1,8 @@
 import * as actionTypes from '../actions/actionTypes';
-import { fetchStart } from '../actions/posts';
 
-initialState={
-    posts=[],
+
+const initialState={
+    posts:[],
     loading:false,
     error:null,
 }
@@ -14,21 +14,21 @@ initialState={
 // };
 
 
-fetchStart=(state,action)=>{
+const fetchInit=(state,action)=>{
     return{
         ...state,
-        [loading]:true
+        ["loading"]:true
     }
 }
 
-fetchPostsAllSuccess=(state,action)=>{
+const fetchPostsAllSuccess=(state,action)=>{
     return{
         ...state,
-        [posts]:action.data
+        ["posts"]:action.data
     }
 }
 
-fetchFail=(state,action)=>{
+const fetchFail=(state,action)=>{
     return{
         ...state,
         error:action.error
@@ -38,7 +38,7 @@ fetchFail=(state,action)=>{
 
 const reducer = ( state = initialState, action ) => {
     switch ( action.type ) {
-        case actionTypes.FETCH_POSTS_ALL_START: return fetchStart( state, action );
+        case actionTypes.FETCH_POSTS_ALL_START: return fetchInit( state, action );
         case actionTypes.FETCH_POSTS_ALL_SUCCESS: return fetchPostsAllSuccess( state, action );
         case actionTypes.FETCH_POSTS_ALL_FAIL: return fetchFail( state, action );
         // case actionTypes.PURCHASE_BURGER_START: return purchaseBurgerStart( state, action );
