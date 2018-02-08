@@ -7,8 +7,6 @@ import HomePage from './pages/HomePage';
 
 class App extends Component {
 
-
-
   render() {
     const defaultCategories = {
       categories: [
@@ -86,11 +84,14 @@ class App extends Component {
       <Layout categories={categories}>
         <Switch>
           {/* {categories.map(category => <Route path={'/' + category.path} render={()=><PostList data={posts}/>} />)} */}
+          
           <Route path='/' component={HomePage} />
         </Switch>
       </Layout>
     );
   }
 }
+
+
 
 export default App;

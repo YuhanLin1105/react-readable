@@ -17,22 +17,23 @@ const initialState={
 const fetchStart=(state,action)=>{
     return{
         ...state,
-        ['loading']:true
+       loading:true
     }
 }
 
 const fetchPostsAllSuccess=(state,action)=>{
     return{
         ...state,
-        ['posts']:action.data
+        posts:action.data,
+        loading:false
     }
 }
 
 const fetchFail=(state,action)=>{
     return{
         ...state,
-        ['error']:action.error,
-        ['loading']:true
+        error:action.error,
+        loading:true
     }
 }
 
