@@ -1,9 +1,9 @@
 import * as actionTypes from './actionTypes';
-import * as ReadbleAPI from '../../ReadableAPI';
+import { getPostsAll } from '../../ReadableAPI';
 
 
 
-export const fetchStart = () =>{ return{ type: actionTypes.FETCH_POSTS_ALL_START } };
+export const fetchStart = () => { return { type: actionTypes.FETCH_POSTS_ALL_START } };
 
 export const fetchSuccess = (data) => {
     return {
@@ -22,13 +22,13 @@ export const fetchFail = (err) => {
 export const fetchPostsAll = () => {
     return dispatch => {
         dispatch(fetchStart());
-        ReadbleAPI.getPostsAll()
+        getPostsAll()
             .then(data => {
-                console.log(data);
+                // console.log(data);
                 dispatch(fetchSuccess(data));
             })
             .catch(err => {
-                console.error(err);
+                // console.error(err);
                 dispatch(fetchFail());
             })
     }

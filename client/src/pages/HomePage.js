@@ -2,23 +2,23 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import * as actionCreater from '../store/actions/index';
+import PostList from '../components/PostList/PostList';
 
 
 class HomePage extends Component {
-    state = {}
 
 
-    componentDidMount(){
+    componentDidMount() {
         this.props.fetchPostsAll();
 
     }
 
     render() {
-        return (
-            <div>
-                HomePage
-            </div>
-        );
+        const list = this.props.posts
+            ?<PostList  data={this.props.posts}/>
+            :null;
+
+        return list;
     }
 }
 
@@ -30,9 +30,10 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        fetchPostsAll:()=>dispatch(actionCreater.fetchPostsAll())
+        fetchPostsAll: () => dispatch(actionCreater.fetchPostsAll())
     }
 }
 
 
-export default connect(mapStateToProps,mapDispatchToProps)(HomePage);
+
+export default connect(mapStateToProps, mapDispatchToProps)(HomePage);
