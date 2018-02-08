@@ -2,7 +2,7 @@ import * as actionTypes from '../actions/actionTypes';
 
 
 const initialState={
-    posts:[],
+    posts:null,
     loading:false,
     error:null,
 }
@@ -14,31 +14,32 @@ const initialState={
 // };
 
 
-const fetchInit=(state,action)=>{
+const fetchStart=(state,action)=>{
     return{
         ...state,
-        ["loading"]:true
+        ['loading']:true
     }
 }
 
 const fetchPostsAllSuccess=(state,action)=>{
     return{
         ...state,
-        ["posts"]:action.data
+        ['posts']:action.data
     }
 }
 
 const fetchFail=(state,action)=>{
     return{
         ...state,
-        error:action.error
+        ['error']:action.error,
+        ['loading']:true
     }
 }
 
 
 const reducer = ( state = initialState, action ) => {
     switch ( action.type ) {
-        case actionTypes.FETCH_POSTS_ALL_START: return fetchInit( state, action );
+        case actionTypes.FETCH_POSTS_ALL_START: return fetchStart( state, action );
         case actionTypes.FETCH_POSTS_ALL_SUCCESS: return fetchPostsAllSuccess( state, action );
         case actionTypes.FETCH_POSTS_ALL_FAIL: return fetchFail( state, action );
         // case actionTypes.PURCHASE_BURGER_START: return purchaseBurgerStart( state, action );

@@ -11,32 +11,35 @@ const headers = {
   'Authorization': token
 }
 
-export const get = (bookId) =>
-  fetch(`${api}/books/${bookId}`, { headers })
+// export const get = (bookId) =>
+//   fetch(`${api}/books/${bookId}`, { headers })
+//     .then(res => res.json())
+//     .then(data => data.book)
+export const getCategories = () =>
+  fetch(`${api}/categories`, { headers })
     .then(res => res.json())
-    .then(data => data.book)
 
 export const getPostsAll = () =>
   fetch(`${api}/posts`, { headers })
     .then(res => res.json())
 
-export const update = (id, shelf) =>
-  fetch(`${api}/books/${id}`, {
-    method: 'PUT',
-    headers: {
-      ...headers,
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({ shelf })
-  }).then(res => res.json())
+// export const update = (id, shelf) =>
+//   fetch(`${api}/books/${id}`, {
+//     method: 'PUT',
+//     headers: {
+//       ...headers,
+//       'Content-Type': 'application/json'
+//     },
+//     body: JSON.stringify({ shelf })
+//   }).then(res => res.json())
 
-export const search = (query) =>
-  fetch(`${api}/search`, {
-    method: 'POST',
-    headers: {
-      ...headers,
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({ query })
-  }).then(res => res.json())
-    .then(data => data.books)
+// export const search = (query) =>
+//   fetch(`${api}/search`, {
+//     method: 'POST',
+//     headers: {
+//       ...headers,
+//       'Content-Type': 'application/json'
+//     },
+//     body: JSON.stringify({ query })
+//   }).then(res => res.json())
+//     .then(data => data.books)
