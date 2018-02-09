@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { withRouter } from 'react-router-dom';
+import { withRouter,Link } from 'react-router-dom';
 import { Layout, Menu, Breadcrumb, Icon } from 'antd';
 
 
@@ -13,9 +13,9 @@ class MyLayout extends Component {
         this.setState({
             current: e.key,
         });
-        if (e.key.includes('category')) {
-            this.props.history.push('/' + e.key.slice(9));
-        }
+        // if (e.key.includes('category')) {
+        //     this.props.history.push('/' + e.key.slice(9));
+        // }
     }
 
     render() {
@@ -42,8 +42,11 @@ class MyLayout extends Component {
                         style={{ lineHeight: '64px' }}
                     >
                         <Menu.SubMenu title={<span>Categories<Icon type="caret-down" style={{ fontSize: 10 }} /></span>}>
-                            <Menu.Item key="category:">Home</Menu.Item>
-                            {this.props.categories.map(category => <Menu.Item key={"category:" + category.name}>{category.name}</Menu.Item>)}
+                            <Menu.Item key="category:home"><Link to='/'>Home</Link></Menu.Item>
+                            {this.props.categories.map(category => 
+                                <Menu.Item key={"category:" + category.name}>
+                                    <Link to={'/'+category.path}>{category.name}</Link>
+                                </Menu.Item>)}
                         </Menu.SubMenu>
                         <Menu.Item key="setting:1" style={{ float: 'right' }}>Option 1</Menu.Item>
                         <Menu.Item key="setting:2" style={{ float: 'right' }}>Option 2</Menu.Item>
@@ -67,4 +70,4 @@ class MyLayout extends Component {
     }
 }
 
-export default withRouter(MyLayout);
+export default MyLayout;

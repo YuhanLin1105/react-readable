@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import * as actionCreater from '../store/actions/index';
+import {fetchPostsAll} from '../store/actions/index';
 import PostList from '../components/PostList/PostList';
 
 
@@ -30,7 +30,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        fetchPostsAll: () => dispatch(actionCreater.fetchPostsAll())
+        fetchPostsAll: () => dispatch(fetchPostsAll())
     }
 }
 
