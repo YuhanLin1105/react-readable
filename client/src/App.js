@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import Layout from './components/Layout/Layout';
 import HomePage from './pages/HomePage';
 import CategoryPage from './pages/CategoryPage';
+import PostPage from './pages/PostPage';
 import * as actionCreater from './store/actions/index';
 
 class App extends Component {
@@ -28,17 +29,14 @@ class App extends Component {
           />)
       : null;
 
-
-    console.log(categories);
     return (
       <Layout categories={categories ? categories : []}>
-        {categoryRoute}
-        {/* <Route
-          exact
-          path={'/react'}
-          render={() => <CategoryPage category='react' />}
-        /> */}
-        <Route exact path='/' component={HomePage} />
+        <Switch>
+          {categoryRoute}
+          <Route exact path='/post' component={PostPage} />
+          <Route exact path='/' component={HomePage} />
+        </Switch>
+
       </Layout>
     );
   }

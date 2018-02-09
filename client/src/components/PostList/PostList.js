@@ -1,18 +1,19 @@
 import React from 'react';
-import { List,Icon } from 'antd';
+import { List, Icon } from 'antd';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 const PostList = (props) => {
     const IconText = ({ type, text }) => (
         <span>
-          <Icon type={type} style={{ marginRight: 8 }} />
-          {text}
+            <Icon type={type} style={{ marginRight: 8 }} />
+            {text}
         </span>
-      );
-    const VoteText = ({text})=>(
+    );
+    const VoteText = ({ text }) => (
         <span>
             <Icon type='like-o' style={{ marginRight: 8 }} />
-            <Icon onClick={()=>alert('text')} type='dislike-o' style={{ marginRight: 8 }} />
+            <Icon onClick={() => alert('text')} type='dislike-o' style={{ marginRight: 8 }} />
             {text}
         </span>
     );
@@ -24,12 +25,12 @@ const PostList = (props) => {
             itemLayout="horizontal"
             dataSource={props.data}
             renderItem={item => (
-                <List.Item 
-                    actions={[ <VoteText text={item.voteScore} />, <IconText type="message" text={item.commentCount} />,<a>edit</a>, <a>delete</a>]}
-                    
-                    >
+                <List.Item
+                    actions={[<VoteText text={item.voteScore} />, <IconText type="message" text={item.commentCount} />, <a>edit</a>, <a>delete</a>]}
+
+                >
                     <List.Item.Meta
-                        title={<a href="https://ant.design">{item.title}</a>}
+                        title={<Link to={{ pathname: '/post', hash: '#' + item.id }}>{item.title}</Link>}
                         description={item.body}
                     />
                 </List.Item>
@@ -38,8 +39,8 @@ const PostList = (props) => {
     );
 };
 
-PostList.propTypes={
-    data:PropTypes.array.isRequired
+PostList.propTypes = {
+    data: PropTypes.array.isRequired
 }
 
 

@@ -42,7 +42,7 @@ class MyLayout extends Component {
                         style={{ lineHeight: '64px' }}
                     >
                         <Menu.SubMenu title={<span>Categories<Icon type="caret-down" style={{ fontSize: 10 }} /></span>}>
-                            <Menu.Item key="category:home"><Link to='/'>Home</Link></Menu.Item>
+                            <Menu.Item key="category:home"><Link to={{pathname:'/'}}>Home</Link></Menu.Item>
                             {this.props.categories.map(category => 
                                 <Menu.Item key={"category:" + category.name}>
                                     <Link to={'/'+category.path}>{category.name}</Link>
