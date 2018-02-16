@@ -1,22 +1,34 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import Divider from 'antd/lib/divider';
+
+import {fetchPost} from '../store/actions/index';
+import PostList from '../components/PostList/PostList';
 
 class PostPage extends Component {
 
     componentDidMount(){
         console.log(this.props.history.location.hash.slice(1));
+        this.props.fetchPost(this.props.history.location.hash.slice(1));
     }
 
     render() {
-        return (
-            <div>
-                post
-            </div>
-        );
+        const post = this.props.post
+            ?<PostList post data={this.props.post}/>
+            :null
+        return post;
     };
 }
 
+const mapStateToProps = state =>{
+    return{
+        post:state.posts.posts
+    }
+}
 
+const mapDispatchToProps = dispatch =>{
+    return{
+        fetchPost:(postId)=>dispatch(fetchPost(postId))
+    }
+}
 
-export default PostPage;
+export default connect(mapStateToProps,mapDispatchToProps)(PostPage);

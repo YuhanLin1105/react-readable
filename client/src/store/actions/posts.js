@@ -1,5 +1,5 @@
 import * as actionTypes from './actionTypes';
-import { getPostsAll, getCategoryPosts } from '../../ReadableAPI';
+import { getPostsAll, getCategoryPosts,getPostById } from '../../ReadableAPI';
 
 
 
@@ -29,7 +29,7 @@ export const fetchPostsAll = () => {
             })
             .catch(err => {
                 // console.error(err);
-                dispatch(fetchFail());
+                dispatch(fetchFail(err));
             })
     }
 }
@@ -44,7 +44,22 @@ export const fetchPostsCategory = (category) => {
             })
             .catch(err => {
                 // console.error(err);
-                dispatch(fetchFail());
+                dispatch(fetchFail(err));
+            })
+    }
+}
+
+export const fetchPost = (postId) =>{
+    return dispatch =>{
+        dispatch(fetchStart())
+        getPostById(postId)
+            .then(data=>{
+                console.log(data);
+                dispatch(fetchSuccess([data]));
+            })
+            .catch(err=>{
+                console.error(err);
+                dispatch(fetchFail(err));
             })
     }
 }
