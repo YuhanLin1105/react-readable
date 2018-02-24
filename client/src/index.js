@@ -9,7 +9,7 @@ import postsReducer from './store/reducers/posts';
 import categoriesReducer from './store/reducers/categories';
 import commentsReducer from './store/reducers/comments';
 import App from './App';
-import 'antd/dist/antd.css';
+// import 'antd/dist/antd.css';
 import registerServiceWorker from './registerServiceWorker';
 
 const composeEnhancers = process.env.NODE_ENV==="development"?window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ :null|| compose;

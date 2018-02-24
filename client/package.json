@@ -2,6 +2,11 @@
   "name": "client",
   "version": "0.1.0",
   "private": true,
+  "proxy": {
+    "/api": {
+      "target": "http://localhost:3001"
+    }
+  },
   "dependencies": {
     "antd": "^3.2.0",
     "autoprefixer": "7.1.6",
@@ -91,6 +96,16 @@
   "babel": {
     "presets": [
       "react-app"
+    ],
+    "plugins": [
+      [
+        "import",
+        {
+          "libraryName": "antd",
+          "libraryDirectory": "es",
+          "style": "css"
+        }
+      ]
     ]
   },
   "eslintConfig": {

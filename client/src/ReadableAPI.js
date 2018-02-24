@@ -1,5 +1,9 @@
 
-const api = "http://localhost:3001"
+// "proxy": {
+//   "/api": {
+//     "target": "http://localhost:3001"
+//   }
+// }
 
 
 let token = localStorage.token
@@ -16,19 +20,19 @@ const headers = {
 //     .then(res => res.json())
 //     .then(data => data.book)
 export const getCategories = () =>
-  fetch(`${api}/categories`, { headers })
+  fetch(`/api/categories`, { headers })
     .then(res => res.json())
 
 export const getPostsAll = () =>
-  fetch(`${api}/posts`, { headers })
+  fetch(`/api/posts`, { headers })
     .then(res => res.json())
 
 export const getCategoryPosts = (category) =>
-  fetch(`${api}/${category}/posts`, { headers })
+  fetch(`/api/${category}/posts`, { headers })
     .then(res => res.json())
 
 export const getPostById = (postId) =>
-  fetch(`${api}/posts/${postId}`, { headers })
+  fetch(`/posts/${postId}`, { headers })
     .then(res => res.json())
 
 
