@@ -42,8 +42,7 @@ const PostList = (props) => {
     />
 
     const post = <List
-        size='large'
-        pagination
+        size='small'
         itemLayout="vertical"
         dataSource={props.data}
         renderItem={item => (

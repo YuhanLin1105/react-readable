@@ -6,7 +6,7 @@ import Layout from './components/Layout/Layout';
 import HomePage from './pages/HomePage';
 import CategoryPage from './pages/CategoryPage';
 import PostPage from './pages/PostPage';
-import * as actionCreater from './store/actions/index';
+import { actionCreator } from './store/categories';
 
 class App extends Component {
 
@@ -33,10 +33,9 @@ class App extends Component {
       <Layout categories={categories ? categories : []}>
         <Switch>
           {categoryRoute}
-          <Route exact path='/post' component={PostPage} />
+          <Route path='/post' component={PostPage} />
           <Route exact path='/' component={HomePage} />
         </Switch>
-
       </Layout>
     );
   }
@@ -50,7 +49,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    fetchCategories: () => dispatch(actionCreater.fetchCategories())
+    fetchCategories: () => dispatch(actionCreator.fetchCategories())
   }
 }
 
