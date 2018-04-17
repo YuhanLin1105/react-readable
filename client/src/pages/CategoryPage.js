@@ -1,36 +1,46 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { Spin } from "antd";
 
-import PostList from '../components/PostList/PostList';
-import { fetchPostsCategory } from '../store/actions/index';
-
+import PostList from "../components/PostList/PostList";
+import { actionCreator } from "../store/posts";
 
 class CategoryPage extends Component {
+  componentDidMount() {
+    this.props.fetchCategoryPosts(this.props.category);
+  }
 
-    componentDidMount() {
-        this.props.fetchCategoryPosts(this.props.category);
+  render() {
+    if (this.props.posts) {
+      const { posts, loading } = this.props.posts;
+      const list = posts ? <PostList data={posts} /> : null;
+      console.log(list);
+      return loading ? (
+        <div style={{ textAlign: "center" }}>
+          <Spin />
+        </div>
+      ) : (
+        list
+      );
+    } else {
+      <div style={{ textAlign: "center" }}>
+        <Spin />
+      </div>;
     }
-
-    render() {
-        const { posts } = this.props;
-        const list = posts
-            ? <PostList data={posts} />
-            : null
-        return list;
-    };
-
+  }
 }
 
 const mapStateToProps = state => {
-    return {
-        posts: state.posts.posts
-    }
-}
+  return {
+    posts: state.posts
+  };
+};
 
 const mapDispatchToProps = dispatch => {
-    return {
-        fetchCategoryPosts: (category) => dispatch(fetchPostsCategory(category))
-    }
-}
+  return {
+    fetchCategoryPosts: category =>
+      dispatch(actionCreator.fetchPostsCategory(category))
+  };
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(CategoryPage);

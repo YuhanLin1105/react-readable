@@ -1,40 +1,35 @@
-
 // "proxy": {
 //   "/api": {
 //     "target": "http://localhost:3001"
 //   }
 // }
 
-
-let token = localStorage.token
+let token = localStorage.token;
 if (!token)
-  token = localStorage.token = Math.random().toString(36).substr(-8)
+  token = localStorage.token = Math.random()
+    .toString(36)
+    .substr(-8);
 
 const headers = {
   // 'Accept': 'application/json',
-  'Authorization': token
-}
+  Authorization: token
+};
 
 // export const get = (bookId) =>
 //   fetch(`${api}/books/${bookId}`, { headers })
 //     .then(res => res.json())
 //     .then(data => data.book)
 export const getCategories = () =>
-  fetch(`/api/categories`, { headers })
-    .then(res => res.json())
+  fetch(`/api/categories`, { headers }).then(res => res.json());
 
 export const getPostsAll = () =>
-  fetch(`/api/posts`, { headers })
-    .then(res => res.json())
+  fetch(`/api/posts`, { headers }).then(res => res.json());
 
-export const getCategoryPosts = (category) =>
-  fetch(`/api/${category}/posts`, { headers })
-    .then(res => res.json())
+export const getCategoryPosts = category =>
+  fetch(`/api/${category}/posts`, { headers }).then(res => res.json());
 
-export const getPostById = (postId) =>
-  fetch(`/posts/${postId}`, { headers })
-    .then(res => res.json())
-
+export const getPostById = postId =>
+  fetch(`/posts/${postId}`, { headers }).then(res => res.json());
 
 // export const update = (id, shelf) =>
 //   fetch(`${api}/books/${id}`, {
